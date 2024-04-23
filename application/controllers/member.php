@@ -94,7 +94,7 @@ class Member extends CI_Controller
     }
     public function myProfil()
     {
-    $data['judul'] = 'Profil Saya';
+
     $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 
     foreach ($user as $a) {
@@ -105,7 +105,7 @@ class Member extends CI_Controller
             'tanggal_input' => $user['tanggal_input'],
         ];
     }
-
+    $data['judul'] = 'Profil Saya';
     $this->load->view('templates/templates-user/header', $data);
     $this->load->view('member/index', $data);
     $this->load->view('templates/templates-user/modal');
@@ -113,7 +113,7 @@ class Member extends CI_Controller
     }
     public function ubahProfil()
     {
-    $data['judul'] = 'Profil Saya';
+
     $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 
     foreach ($user as $a) {
@@ -127,7 +127,7 @@ class Member extends CI_Controller
     $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
         'required' => 'Nama tidak Boleh Kosong'
         ]);
-
+        $data['judul'] = 'ubah Profil Saya';
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/templates-user/header', $data);
             $this->load->view('member/ubah-anggota', $data);
